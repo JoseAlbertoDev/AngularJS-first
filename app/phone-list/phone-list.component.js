@@ -21,6 +21,7 @@
                 snippet: 'The Next, Next Generation tablet.'
             }
         ],
-        this.nombre = 'Listado de teléfonos'
+        this.nombre = 'Listado de teléfonos',
+        this.query = '';
     }
 })();
