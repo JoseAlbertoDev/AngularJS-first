@@ -7,17 +7,13 @@
     <link rel="stylesheet" href="app.css" />
     <script src="lib/angular/angular.js"></script>
     <script src="app.js"></script>
+    <script src="phone-list.component.js"></script>
+    <script src="hello.component.js"></script>
   </head>
-  <body ng-controller="PhoneListController">
-    <h3>{{nombre}}</h3>
-    <ul>
-      <li ng-repeat="phone in phones">
-        <span>{{phone.name}}</span>
-        <p>{{phone.snippet}}</p>
-      </li>
-    </ul>
-    <p>Number: {{phones.length}}</p>
-
+  <body>
+    
+    <phone-list></phone-list>
+    <hello-all></hello-all>
     <table>
       <tr>
         <th colspan="12">Tabla</th>
