@@ -7,7 +7,8 @@
         });
 
     function HelloAllController() {
-        this.usuario = 'Alberto';
-        this.numero = 2;
+        self = this;
+        self.usuario = 'Alberto';
+        self.numero = 2;
     }
 })();

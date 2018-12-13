@@ -9,6 +9,8 @@
     describe('PhoneList test', TestPhoneList1);
 
     describe('Probando ordenacion', TestPhoneList2);
+
+    describe('Lista con css', TestPhoneList3);
     
   });
 
@@ -26,14 +28,14 @@
 
     var query = element(by.model('$ctrl.query'));
 
-    expect(phoneList.count()).toBe(20);
+    expect(phoneList.count()).toBe(5);
 
     query.sendKeys('nexus');
-    expect(phoneList.count()).toBe(1);
+    expect(phoneList.count()).toBe(0);
 
     query.clear();
     query.sendKeys('motorola');
-    expect(phoneList.count()).toBe(8);
+    expect(phoneList.count()).toBe(3);
   }
 
   function TestPhoneList2() {
@@ -64,16 +66,33 @@
     queryField.sendKeys('tablet');   // Let's narrow the dataset to make the assertions shorter
 
     expect(getNames()).toEqual([
-      'Nokia 300',
-      'IPhone 9'
+      'Motorola XOOM\u2122 with Wi-Fi',
+      'MOTOROLA XOOM\u2122'
     ]);
 
     nameOption.click();
 
     expect(getNames()).toEqual([      
-      'IPhone 9',
-      'Nokia 300'
+      'MOTOROLA XOOM\u2122',
+      'Motorola XOOM\u2122 with Wi-Fi'
     ]);
+  }
+
+  function TestPhoneList3() {
+    beforeEach(function() {
+      browser.get('index.html')
+    });
+
+    it('Comprobacion con css activo', TestAplicacionCss);
+
+  }
+
+  function TestAplicacionCss() {
+    var query = element(by.model('$ctrl.query'));
+    query.sendKeys('gem');
+
+    element.all(by.css('.phones li a')).first().click();
+    expect(browser.getCurrentUrl()).toContain('index.html#!/phones/samsung-gem');
   }
 
 })();
