@@ -7,10 +7,12 @@ exports.config = {
     '*.js'
   ],
 
-  capabilities: {
-    'browserName': 'firefox'
-  },
-
+  multiCapabilities: [{
+    browserName: 'firefox'
+  }, {
+    browserName: 'chrome'
+  }],
+  highlightDelay: 2000,
   baseUrl: 'http://localhost:8000/',
 
   framework: 'jasmine',

@@ -3,12 +3,19 @@
         <div class="col-md-2">
             <h3>{{nombre}}</h3> 
             <p>Search: <input ng-model="$ctrl.query" /></p>
+            <p>Ordenar por: 
+                <select ng-model="$ctrl.orderProp">
+                    <option value="name">Alfabético</option>
+                    <option value="age">Novedad</option>
+                    <option value="-age">Más antiguo</option>
+                </select>
+            </p>
         </div>
         <div class="col-md-10">
             
             <span> Filtrando por {{$ctrl.query}}</span>
-            <ul>
-                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query">
+            <ul class="phones">
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp">
                     <span>{{phone.name}}</span> 
                     <p>{{phone.snippet}}</p>
                 </li> 

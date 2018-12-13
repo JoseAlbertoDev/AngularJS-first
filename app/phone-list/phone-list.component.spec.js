@@ -8,12 +8,23 @@
         
         beforeEach(module('phoneList'));
 
-        describe('PhoneListController', function() {
-            it('comprobando longitud', inject(function($componentController) {
-                // Referencia al componente con camelCase
-                var ctrl = $componentController('phoneList');
-                expect(ctrl.phones.length).toBe(3);
-            }));
-        });
+        describe('PhoneListController', TestPhoneListController);
     });
+
+    function TestPhoneListController() {
+        var ctrl;
+
+        beforeEach(inject(function($componentController){
+            ctrl = $componentController('phoneList');
+        }));
+
+        it('lista con 3 teléfonos', function () {
+            expect(ctrl.phones.length).toBe(3);
+        });
+
+        it('order tiene que ser age', function() {
+            expect(ctrl.orderProp).toBe('age');
+        });
+    }
+    
 })();
