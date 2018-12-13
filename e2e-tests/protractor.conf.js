@@ -12,7 +12,7 @@ exports.config = {
   }, {
     browserName: 'chrome'
   }],
-  highlightDelay: 2000,
+  
   baseUrl: 'http://localhost:8000/',
 
   framework: 'jasmine',

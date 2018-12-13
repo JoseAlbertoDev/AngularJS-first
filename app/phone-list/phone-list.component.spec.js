@@ -12,14 +12,25 @@
     });
 
     function TestPhoneListController() {
-        var ctrl;
+        var $httpBackend, ctrl;
 
-        beforeEach(inject(function($componentController){
+        beforeEach(inject(function($componentController, _$httpBackend_){
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('phones/phones.json')
+                    .respond([{name:'Nexus S'}, {name: 'Motorola DROID'}]);
             ctrl = $componentController('phoneList');
         }));
 
+        it('- phones undefined test - ', function() {
+            expect(ctrl.phones).toBeUndefined();
+            
+            $httpBackend.flush();
+            expect(ctrl.phones).toEqual([{name:'Nexus S'}, {name: 'Motorola DROID'}]);
+        });
+
         it('lista con 3 teléfonos', function () {
-            expect(ctrl.phones.length).toBe(3);
+            $httpBackend.flush();
+            expect(ctrl.phones.length).toBe(2);
         });
 
         it('order tiene que ser age', function() {

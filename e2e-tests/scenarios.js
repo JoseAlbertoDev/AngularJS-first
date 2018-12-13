@@ -26,14 +26,14 @@
 
     var query = element(by.model('$ctrl.query'));
 
-    expect(phoneList.count()).toBe(3);
+    expect(phoneList.count()).toBe(20);
 
-    query.sendKeys('Huawei');
+    query.sendKeys('nexus');
     expect(phoneList.count()).toBe(1);
 
     query.clear();
-    query.sendKeys('nokia');
-    expect(phoneList.count()).toBe(1);
+    query.sendKeys('motorola');
+    expect(phoneList.count()).toBe(8);
   }
 
   function TestPhoneList2() {

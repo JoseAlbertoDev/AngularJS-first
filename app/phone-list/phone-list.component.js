@@ -8,24 +8,15 @@
             controller: PhoneListController
         });
         
-    function PhoneListController() {
-        this.phones = [
-            {
-                name: 'Huawei P20',
-                snippet: 'Fast just got faster with Nexus S.',
-                age: 1
-            }, {
-                name: 'IPhone 9',
-                snippet: 'The Next, Next Generation tablet.',
-                age: 2
-            }, {
-                name: 'Nokia 300',
-                snippet: 'The Next, Next Generation tablet.',
-                age: 3
-            }
-        ],
-        this.nombre = 'Listado de teléfonos',
-        this.query = '';
-        this.orderProp = "age";
-    }
+    function PhoneListController($http) {
+        var self = this;
+        $http.get('phones/phones.json').then(function(response) {
+            self.phones = response.data;
+        });
+        self.nombre = 'Listado de teléfonos',
+        self.query = '';
+        self.orderProp = "age";
+    };
+    // Como pasar parámetros a una función.
+    PhoneListController.$inject = ['$http'];
 })();
